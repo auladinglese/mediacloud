@@ -4,3 +4,7 @@ steps:
 # out of disk space on bigger rebuilds
 - script: ./dev/build.py --prune_images
   displayName: Build images
+  env:
+    # Enable BuildKit
+    DOCKER_BUILDKIT: 1
+

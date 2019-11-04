@@ -99,7 +99,7 @@ if __name__ == '__main__':
     images = _docker_images_to_build(all_apps_dir=args.all_apps_dir(), docker_hub_username=docker_hub_username_)
 
     for image in images:
-        command = "docker build --cache-from {repo}:latest --tag {repo}:{tag} --tag {repo}:latest {path}".format(
+        command = "docker build --build-arg BUILDKIT_INLINE_CACHE=1 --cache-from {repo}:latest --tag {repo}:{tag} --tag {repo}:latest {path}".format(
             repo=image.repository,
             tag=image_tag,
             path=image.path,
